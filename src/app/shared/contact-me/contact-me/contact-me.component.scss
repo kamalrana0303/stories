@@ -1,0 +1,53 @@
+section{
+    @apply  bg-purple-100 p-2 pt-20 flex flex-col justify-center items-center w-full;
+}
+.container{
+    @apply bg-white rounded-lg w-fit
+}
+form{
+    @apply  grid grid-cols-2 grid-rows-5 gap-4 max-w-2xl items-center;
+}
+form input,select, textarea {
+    @apply rounded-lg 
+    font-light 
+    focus:ring-2 
+    focus:ring-purple-300 
+     text-purple-700 
+     caret-purple-900  
+     ring-1 
+     ring-purple-300 
+     focus:outline-none 
+     bg-white w-full p-3;    
+}
+
+form input[placeholder], select,textarea[placeholder]{
+    @apply tracking-wide font-light text-xs text-purple-600;
+}
+
+form .textarea{
+    @apply col-span-2
+}
+form label{
+    font-size: 0.55rem;
+    @apply text-purple-400 font-semibold uppercase tracking-wider;
+} 
+
+form #callback-submit{
+    @apply flex  flex-row  justify-center  w-full row-start-5 col-span-2;
+    button{
+        @apply hover:shadow-md 
+        hover:shadow-gray-200 
+        rounded-lg ring-1 
+        ring-purple-300  p-2 
+        text-sm 
+        text-purple-400 font-normal uppercase tracking-wider bg-purple-50 w-full pl-16 pr-16;
+    }
+}
+
+.container{
+    @apply p-10 flex flex-col justify-center items-center;
+}
+
+h1{
+    @apply text-purple-700 text-center max-sm:text-sm max-md:text-xl  text-3xl uppercase tracking-wide mb-10;
+}

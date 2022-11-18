@@ -1,0 +1,17 @@
+.avatar{
+    @apply rounded-full
+}
+
+figure:nth-of-type(1){
+    @apply flex flex-col gap-1;
+}
+section > figure > figcaption{
+    @apply text-purple-600 font-sans font-medium text-xs tracking-widest leading-3 uppercase mt-1 mb-1;
+    
+}
+section > figure > picture {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

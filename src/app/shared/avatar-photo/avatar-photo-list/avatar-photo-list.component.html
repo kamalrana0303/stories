@@ -1,0 +1,19 @@
+<section>
+    <div>
+        <div class="previous" (click)="previous(index)"><</div>
+        <div>
+            <!-- <figure *ngFor="let avatar of avatars">
+                <picture>
+                     <img [src]="avatar.img" height="50" width="50">
+                </picture>
+             </figure> -->
+             <img *ngFor="let avatar of avatars;let i=index" [id]="'avatar-'+i" [src]="avatar.img" height="50px" width="50px" (click)="index = i">
+        </div>
+        <div class="next" (click)="next(index)">></div>
+    </div> 
+    <div>
+        <div class="radio">
+            <div *ngFor="let x of avatars; let j = index"  [ngClass]="{fill: j==index, outline: j!=index}"></div>
+        </div> 
+    </div>  
+</section>

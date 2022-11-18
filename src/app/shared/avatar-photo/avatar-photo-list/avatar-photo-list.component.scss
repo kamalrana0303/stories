@@ -1,0 +1,37 @@
+section {
+    @apply flex flex-col items-center;
+}
+.previous, .next{
+    width: fit-content !important;
+    @apply absolute flex flex-col justify-center items-center text-2xl cursor-pointer text-purple-500
+}
+.previous {
+    margin-left: -5px !important;
+    @apply left-0 top-0 bottom-0;
+}
+.next{
+    margin-right: -5px !important;
+    @apply right-0 top-0 bottom-0
+}
+section > div{
+    @apply relative flex flex-row gap-2 w-fit;
+}
+section > div > div{    
+    @apply flex flex-row gap-2 w-28 overflow-hidden ml-5 mr-5 max-w-full;
+}
+section > div > div > img {
+    @apply rounded-full;
+}
+.radio{
+    @apply m-3 p-3 flex flex-row justify-center items-center;
+}
+.primary{
+    @apply ring-purple-600
+}
+.fill{
+    @apply ring-2 w-2 h-2 rounded-full ring-purple-600;
+}
+.outline{
+    color: rgb(147 51 234) !important;
+    @apply ring-1 rounded-full w-1 h-1 ring-purple-600;
+}

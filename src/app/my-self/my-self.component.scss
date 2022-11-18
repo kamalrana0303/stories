@@ -1,0 +1,62 @@
+.quote{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 100%;
+    align-items: end;
+    position: relative;
+}
+.container{
+    @apply flex flex-row flex-wrap mb-5 justify-center gap-5;
+}
+.card-extra{
+    @apply w-full md:w-80 flex flex-col gap-4 relative;
+}
+.card > h3{
+    @apply font-semibold uppercase tracking-wider;
+}
+.card > svg{
+    @apply w-full;
+}
+.row{
+    @apply flex-row  flex justify-between w-full;
+}
+@media (max-width: 500px){
+    .quote{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+}
+.quote-bg{
+    background-color: #fafafa;
+    margin: 20px 0px;
+    padding: 10px 20px;
+}
+blockquote{
+    max-width: 15em;
+    font-size: 0.7em;
+}
+blockquote p::before,
+blockquote p::after{
+    font-size: 1em;
+    color: #000;
+    line-height: 0;
+    vertical-align: middle;
+}
+blockquote p:first-child:before{
+    content: "\275D";
+    margin: 0 5px 0 -40px;
+}
+blockquote p::after{
+    content: "\275E";
+    margin: 0 -40px 0 5px;
+}
+blockquote cite::before{
+    content: '- ';
+    opacity: 0.6;
+    width: 15px;
+}
+

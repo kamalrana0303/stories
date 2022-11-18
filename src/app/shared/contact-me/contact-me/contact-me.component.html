@@ -1,0 +1,62 @@
+<section id="callback">
+    <h1>Request a callback</h1>
+    <div class="container" >
+       
+        <form [formGroup]="fg">
+            <div>
+                <label for="name">
+                    Name
+                </label>
+                <input name="name" formControlName="name" placeholder="name"  />
+            </div>
+            <div>
+                <label for="phoneNo">
+                    Phone no
+                </label>
+                <input name="phoneNo" formControlName="phoneNumber" type="tel" placeholder="phone number" (keypress)="validatePhoneNo($event)"  maxlength="10" minlength="10"/>
+            </div>
+            <div>
+                <label for="email">
+                    Email
+                </label>
+                <input name="email" formControlName="email" type="email" placeholder="email" />
+            </div>
+            <div>
+                <label for="state">
+                    State
+                </label>
+                <select name="state" formControlName="state" >
+                    <option [value]="''"><span>--select--</span></option>
+                    <ng-container *ngFor="let s of stateAndUTs">
+                        <option [value]="s.code">{{s.name}}</option>
+                    </ng-container>
+                </select>
+               
+            </div>
+            <div>
+                <label for="alt">
+                    Alternate No
+                </label>
+                <input name="alt" formControlName="alt" type="tel" placeholder="alternate contact no" (keypress)="validatePhoneNo($event)"  maxlength="10" minlength="10" />
+            </div>
+            <div>
+                <label for="city">
+                    city
+                </label>
+                <input name="city" formControlName="city" placeholder="city" />
+            </div>
+
+            <div class="textarea">
+                <label for="query">Query</label>
+                <textarea name="query" formControlName="query" placeholder="please write your query..."></textarea>
+            </div>
+           
+            <div id="callback-submit">
+                <button type="submit" (click)="submit()">Submit</button>
+            </div>
+            
+        </form>
+        
+    </div>
+  
+</section>

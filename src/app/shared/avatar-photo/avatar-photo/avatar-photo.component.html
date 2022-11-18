@@ -1,0 +1,13 @@
+<section class="section">
+        <figure>
+            <picture>
+                <ng-container *ngFor="let src of avatar?.srcset">
+                    <source [media]="src.media" [srcset]="src.path">
+                </ng-container>
+                 <a href="#callback"> 
+                    <img [src]="avatar?.img" alt="Kamal" class="avatar" width="100" height="auto">
+                 </a>
+            </picture>
+             <figcaption >{{name}}</figcaption>
+        </figure>
+</section>
