@@ -88,6 +88,38 @@ export class MySelfComponent implements OnInit {
         {value:undefined,link:'/assets/css3.png'},
         {value:undefined,link:"/assets/tailwind.png"}]
       }]
+    },
+    {
+      heading: "Education",
+      content: [
+        {
+          type: CONTENTTYPE.LI,
+          value: [
+            {value:"R.P.V.V (High School)", link:undefined},
+            {value:"Kirori Mal College (B.sc)", link: "https://kmc.du.ac.in/"},
+            {value: "USICT (MCA) ~ 2018 - 2021",link:"http://ipu.ac.in/usict/"},
+          ]
+        }
+      ],
+      footer:[{
+        type:CONTENTTYPE.IMG,
+        value:[
+          {
+            value: undefined,
+            link: "/assets/rpvv.jpeg"
+          },
+          {
+            value: undefined,
+            link: "/assets/kmc.jpeg"
+          },
+          {
+            value: undefined,
+            link: "/assets/usict.png"
+          }
+        ]
+      }
+       
+      ]
     }
   ]
   constructor() { }
