@@ -42,7 +42,25 @@ export class MySelfComponent implements OnInit {
           ]
         }
       ],
-      footer:[]
+      footer:[
+        {
+          type:CONTENTTYPE.IMG,
+          value: [
+            {
+              link: "../../assets/images/social/linkedIn.svg",
+              value: "https://www.linkedin.com/in/kamal-mohan-singh-rana-27075912a/"
+            },
+            {
+              link:"../../assets/images/social/fb.jpeg",
+              value:"https://www.facebook.com/kamalrana03/"
+            },
+            {
+              link: "../../assets/images/social/instagram.jpeg",
+              value: "https://www.instagram.com/kamalrana03/"
+            }
+          ]
+        }
+      ]
     },
     {
       heading: "Project",

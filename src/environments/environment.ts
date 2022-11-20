@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  oauth2: {
+    clientRoot: "http://localhost:4200/",
+    apiRoot: "http://127.0.0.1:8080/",
+    stsAuthority: "https://dev-kl1uqnoiouturi57.us.auth0.com",
+    clientId:"7qCznsZWZ1d81wE8fQCJdBEr7owyZplp"
+  }
 };
 
 /*

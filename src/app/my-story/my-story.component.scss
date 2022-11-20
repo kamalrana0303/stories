@@ -1,5 +1,9 @@
 section{
-    @apply flex flex-col justify-center items-center mt-10;
+    @apply flex flex-col justify-center items-center;
+}
+:host > section:first-of-type{
+    @apply mb-9 bg-[url('/assets/beams.1fcfd97b.jpg')] relative;
+    height: 40rem;
 }
 .show{
     @apply visible
@@ -7,11 +11,9 @@ section{
 .hide{
     @apply hidden
 }
-.avatar-menu{
-    @apply mb-9 bg-[url('/assets/beams.1fcfd97b.jpg')] h-96 relative;
-}
+
 .row{
-    @apply flex flex-row absolute top-2;
+    @apply flex flex-row absolute top-20;
 }
 .option{
     @apply absolute bottom-2;

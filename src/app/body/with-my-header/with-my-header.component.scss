@@ -2,10 +2,12 @@ header{
     position:fixed;
     left: 0;
     right:0;
+    top:0;
+    z-index: 100;
 }
 main{
     position: relative;
-    top: 80px;
+    top: 0px;
     left: 0;
     right: 0;
 }

@@ -13,3 +13,7 @@ img{
     height: 30px;
     width: auto;
 }
+
+.active{
+    @apply text-purple-900;
+}

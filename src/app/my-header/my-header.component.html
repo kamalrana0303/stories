@@ -1,22 +1,47 @@
-<nav class="navbar navbar-light bg-light navbar-expand-lg"> <!--nav-fill nav-tabs nav-justified-->
-    <div class="container">
-        <a class="navbar-brand" routerLink="/" >
-            <img src="../../assets/profile.jpeg" height="30px" width="auto" />
-        </a>
-        <button class="navbar-toggler" type="button">
-            <span class="navbar-toggler-icon"></span>   <!--appear in mobile view-->
-        </button>
-        <div class="collapse navbar-collapse">
-            <div class="navbar-nav mr-auto">   <!--collapse in mobile view-->
-                <a routerLink="/home" class="nav-item">Home</a>
-                <a routerLink="/home" class="nav-item">Home</a>
+<div >
+    <nav class="bg-white dark:bg-gray-800  ">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class=" flex items-center">
+                    <a class="flex-shrink-0" href="/">
+                        <img class="h-8 w-8" src="../../assets/avatar-1.jpeg" alt="Workflow"/>
+                    </a>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <ng-container *ngFor="let routerLink of routerLinks">
+                                <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" [routerLink]="routerLink.link" [routerLinkActive]="['active']">
+                                    {{routerLink.name}}
+                                </a>
+                            </ng-container>
+                        </div>    
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <button (click)="login()" type="button" class="hidden md:block py-2 px-4 rounded-lg  bg-gradient-to-r from-purple-500 to-purple-600 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 ">
+                            Login
+                        </button>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button  (click)="mobMenu=!mobMenu" class="text-gray-800 dark:text-white hover:text-gray-300 inline-flex items-center justify-center p-2 rounded-md focus:outline-none">
+                        <img class="h-8 w-8" width="20" height="20" src="../../assets/svgs/toggle.svg">
+                    </button>
+                </div>
             </div>
         </div>
         
-        
-    </div>
-    <div class="nav navbar-nav">
-
-    </div>
-    
-</nav>
+        <div class="md:hidden" [ngClass]="{hidden: mobMenu}">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <ng-container *ngFor="let routerLink  of routerLinks">
+                    <a class="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium" [routerLink]="routerLink.link">
+                        {{routerLink.name}}
+                    </a>
+                </ng-container>
+                <a (click)="login()"class="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                    Login
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
