@@ -4,15 +4,14 @@ import { CommonModule } from '@angular/common';
 import { MyAccountRoutingModule } from './my-account-routing.module';
 import { MyAccountPageComponent } from './my-account-page/my-account-page.component';
 import { MatButtonModule, MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatNativeDateModule, MatSelectModule, MatTabsModule, MatToolbarModule } from '@angular/material';
-import { ToolbarComponent } from './toolbar/toolbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { PersonalInfoComponent } from './personal-info/personal-info.component';
-import { MyHomeComponent } from './my-home/my-home.component';
-import { UserNameComponent } from './user-name/user-name.component';
+import { PersonalInfoComponent } from './component/personal-info/personal-info.component';
+import { MyHomeComponent } from './component/my-home/my-home.component';
+import { UserNameComponent } from './component/user-name/user-name.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MyAccountEditPageWithoutMenuComponent } from './my-account-edit-page-without-menu/my-account-edit-page-without-menu.component';
-import { GenderComponent } from './gender/gender.component';
-import { DobComponent } from './dob/dob.component';
+import { GenderComponent } from './component/gender/gender.component';
+import { DobComponent } from './component/dob/dob.component';
 const material =[
   MatTabsModule,
     LayoutModule,
@@ -31,14 +30,12 @@ const material =[
 @NgModule({
   declarations: [
     MyAccountPageComponent,
-    ToolbarComponent,
     PersonalInfoComponent,
     MyHomeComponent,
     UserNameComponent,
     MyAccountEditPageWithoutMenuComponent,
     GenderComponent,
-    DobComponent,
-    
+    DobComponent
   ],
   imports: [
     CommonModule,

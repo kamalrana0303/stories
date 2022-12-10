@@ -5,13 +5,13 @@ import { DOBResolver } from 'src/app/core/resolver/dob-resolver';
 import { GenderResolver } from 'src/app/core/resolver/gender-resolver.service';
 import { UsernameResolver } from 'src/app/core/resolver/username-resolver.service';
 import { UserRouteGuard } from 'src/app/core/user-route.guard';
-import { DobComponent } from './dob/dob.component';
-import { GenderComponent } from './gender/gender.component';
+import { DobComponent } from './component/dob/dob.component';
+import { GenderComponent } from './component/gender/gender.component';
 import { MyAccountEditPageWithoutMenuComponent } from './my-account-edit-page-without-menu/my-account-edit-page-without-menu.component';
 import { MyAccountPageComponent } from './my-account-page/my-account-page.component';
-import { MyHomeComponent } from './my-home/my-home.component';
-import { PersonalInfoComponent } from './personal-info/personal-info.component';
-import { UserNameComponent } from './user-name/user-name.component';
+import { MyHomeComponent } from './component/my-home/my-home.component';
+import { PersonalInfoComponent } from './component/personal-info/personal-info.component';
+import { UserNameComponent } from './component/user-name/user-name.component';
 
 const routes: Routes = [
  {

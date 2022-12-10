@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { UserNameComponent } from 'src/app/shared/my-account/user-name/user-name.component';
+import { UserNameComponent } from 'src/app/shared/my-account/component/user-name/user-name.component';
 
 
 
