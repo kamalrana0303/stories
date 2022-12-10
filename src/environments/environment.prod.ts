@@ -2,8 +2,9 @@ export const environment = {
   production: true,
   oauth2: {
     clientRoot: "http://localhost:4200/",
-    apiRoot: "https://securingangularappscoursev2-api-unsecure.azurewebsites.net/api/",
-    stsAuthority: "https://securingangularappscoursev2-sts.azurewebsites.net/",
-    clientId:"spa-client"
+    apiRoot: "http://localhost:8080/",
+    stsAuthority: "https://dev-kl1uqnoiouturi57.us.auth0.com/",
+    clientId:"7qCznsZWZ1d81wE8fQCJdBEr7owyZplp",
+    openIdConfig: ".well-known/jwks.json"
   }
 };

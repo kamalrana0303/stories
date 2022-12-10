@@ -15,7 +15,7 @@ export class AppComponent {
   }
 
   ngOnInit(){
-    this._authService.loginChanged.subscribe(loggedIn=>{
+    this._authService?.loginChanged$.subscribe(loggedIn=>{
       this.isLoggedIn = loggedIn;
     })
     this._authService.isLoggedIn().then(loggedIn=> {

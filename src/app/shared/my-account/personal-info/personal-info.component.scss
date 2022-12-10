@@ -1,0 +1,19 @@
+
+@media(max-width:800px){
+    .figure-lg{
+        display: none !important;
+    }
+
+    .figure-sm{
+        display: block !important;
+    }
+}
+.figure-lg{
+    display: block;
+}
+.figure-sm{
+    display: none;
+    img{
+        height: 80px;
+    }
+}

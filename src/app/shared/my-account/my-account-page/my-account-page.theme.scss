@@ -1,0 +1,20 @@
+@mixin my-account-page(){
+    .mat-tab-links{
+        flex-direction: column !important;
+        justify-content: start !important;
+        width: 100% !important;
+    } 
+    .mat-tab-link{
+        justify-content: start;
+    }
+    @media (max-width: 500px) {
+        .mat-tab-links{         //mobile
+            flex-direction: row !important;
+            width: 100vw !important;
+        }
+        .mat-tab-links > a {        //mobile
+            min-width: fit-content !important;
+        }
+    }
+    
+}

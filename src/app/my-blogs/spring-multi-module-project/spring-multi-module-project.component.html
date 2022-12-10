@@ -1,0 +1,204 @@
+<div>
+  <div class="card">
+    <h1 class="text-center font-bold mb-8">About Spring Quick Guide</h1>
+    <div class="code">
+      <code>brew install maven</code>
+    </div>
+    <div class="code">
+      <code>
+        mvn archetype:generate -DgroupId=com.kamalcode.stories
+        -DartifactId=stories-server
+        -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4
+        -DinteractiveMode=false
+      </code>
+    </div>
+
+    <div class="code flex flex-col">
+      <code> cd stories-server </code>
+      <code> brew install tree </code>
+      <code> tree </code>
+    </div>
+    <div class="code">
+      <p>If we want every single module to have dependencies , we use</p>
+      <code class="dependency">
+        <span>...</span>
+      </code>
+    </div>
+
+    <div class="code">
+      <p>Dependencies can be imported from parent module, We Define dependency of type pom and scope import.</p>
+      <code class="dependencyManagement">
+        <span>...</span>
+      </code>
+    </div>
+    <div class="code">
+      <code class="dependency">
+        <div class="groupId">org.springframework.security</div>
+        <div class="artifactId">
+          spring-security-oauth2-authorization-server
+        </div>
+        <div class="version">0.3.0</div>
+      </code>
+    </div>
+    <p class="text-red-600">
+      <span class="text-black font-bold">Note:&nbsp;</span> <sup>*</sup>require
+      spring.boot.dependencies.version 2.7.0
+    </p>
+    <p class="text-black font-semibold">
+      Taken from springio22 ~ Laurentiu spilca
+    </p>
+    <div class="code">
+      <code>
+        <pre>
+@Configuration
+public class WebsecurityConfig
+<span class="body">
+  @Bean                                           <span class="comment">/**HttpSecurity will be provided by context**/</span>
+  public SecurityFilterChain securityFilterChainWeb(HttpSecurity http)  <span class="comment">/**stopped extending WebsecurityConfigurerAdapter and overriding configure() method**/</span>
+  <span class="body">
+    return http.authorizeRequests()
+    .anyRequest()
+    .authenticated()
+    .and()
+    .build();
+  </span>
+  @Bean
+  public UserDetailsService userDetailsService()
+  <span class="body">
+    var u1 = User.withUsername('bill').password('12345').authorities('read').build();
+    var uds = new InMemoryUserDetailsManager();
+    uds.createUser(u1);
+    return uds;         
+  </span>
+  @Bean
+  public PasswordEncoder passwordEncoder()
+  <span class="body">
+    return NoOpPasswordEncoder.getInstance()  <span class="comment">/** new BcrypPasswordEncoder() **/</span>
+  </span>
+</span>          
+        </pre>
+      </code>
+    </div>
+    
+    <div class="code">
+      <code>
+        <pre>
+@Configuration
+public class AuthorizationServerConfig
+<span class="body">
+  private final KeyManager keyManager;
+  public AuthorizationServerConfig(Keymanager keymanager)
+  <span class="body">
+    this.keyManager = keyManager;
+  </span>
+  @Bean
+  @Ordered(Ordered.HIGHEST_PRECEDENCE)
+  public SecurityFilterChain securityFilterChainAuth(HttpSecurity security) throws Exception
+  <span class="body">
+    Oauth2AuthorizationServerConfiguration.applyDefaultSecurity();    <span class="comment">/**in the future this will be hidden by spring boot.
+      you don't have to do sprinboot will do behind the scene for you**/</span>
+    return http.formLogin().and().build();
+  </span>
+  @Bean
+  public RegisteredClientRepository registeredClientRepository()
+  <span class="body">
+    RegisteredClient registeredClient = RegisteredClient.withId(Random.UUID.randomUUID().toString())
+    .clientId("kamal-client")
+    .clientSecret("kamal-secret")
+    .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+    .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+    .scope(OidcScopes.OPENID)
+    .redirectUri("http://127.0.0.1:4200/signin-callback")
+    .build();
+    return new InMemoryRegisteredClientRepository(registeredClient);
+  </span>
+  @Bean
+  public ProviderSettings providerSettings()
+  <span class="body">
+    <pre>
+    return ProviderSettings.builder().build(); <span class="comment">/**
+    It gives you default settings.
+    ProviderSettings class define issuer , authorization endpoints, token endpoints, jwksetEndpoints, tokenintorspection endpoint etc.
+    all the endpoints required by oauth2 specification.
+    **/
+</span>
+    </pre>
+  </span>
+  @Bean
+  public JWKSource&lt;SecurityContext&gt; jwkSource()   <span class="comment">/**this is key source can't be skipped. 
+    otherwise, you won't have key-pair to sign token. You can have multiple key key-pair
+    that's why we define keyset**/</span>
+    <span class="body">
+      JWKSet set = new JWKSet(keyManger.rsaKey());  <span class="comment">/** required key-pair obtained from keyMangar.rsakey().
+         let's define a class KeyManager to create keypair**/</span>
+      return (j, sc) -> j.select(set);
+    </span>
+
+</span>
+        </pre>
+      </code>
+    </div>
+
+    <div class="code">
+      <code>
+        <pre>
+@Component
+public class KeyManager
+<span class="body">
+  public RSAKey rsaKey()
+  <span class="body">   
+    KeyPairGeneratory generator = KeyPairGenerator.getInstance("RSA");
+    try
+    <span class="body">
+      generator.initialize(2048);
+      var kp = generator.generateKeyPair();
+      RSAPublicKey public = (RSAPublicKey) kp.getPublic();
+      RSAPrivateKey private = (RSAPrivateKey) kp.getPrivate();
+      return new RSAKey.Builder(publicKey).privateKey(private).keyId(UUID.randomUUID().toString()).build(); 
+    </span>catch(NoSuchAlgorithmException e)
+    <span class="body">
+      e.printStackTrace();
+    </span>
+    
+  </span>
+</span>
+        </pre>
+      </code>
+    </div>
+
+    <div class="code flex flex-col gap-4">
+     <div class="ring-1 rounded-lg p-2">
+      <h1 class="text-red-500 mb-1">Note:</h1>
+      <p class="underline mb-4 text-blue-500">http://localhost:8080/oauth2/authorize?response_type=code&client_id=stories&scope=openid&redirect_uri=http://127.0.0.1:4200/signin-callback&code_challenge=xyz&code_challenge_method=S256
+      </p>
+      <p class="underline mb-2 text-blue-500">
+        http://127.0.0.1:8080/oauth2/token?client_id=stories&redirect_uri=http://127.0.0.1:4200/signin-callback&grant_type=authorization_code&code=xyz&code_verifier=pqrs
+      </p>
+      <p class="text-green-500">As a code chanllenge We are sending sha 256 over some random string (32 byte string) as a code challenge ~ if someone intercept the request it can't be reversed because we are not sending code verifier along with code chanllenge</p>
+      <p class="text-green-500">In second call, We are sending code verifier the unhashed string (The random string, We generated.) </p>
+    
+     </div>
+     
+      <div class="ring-1 rounded-lg p-2">
+        <h1 class="underline mb-2 text-blue-500">http://127.0.0.1:8080/oauth2/jwks</h1>
+        <p class="mb-4 mt-4">{{jwkSet | json}}</p>
+        <p class="text-green-500">
+          kid identifier tells authorization server which key-pair should be used. because you can have multiple key pairs. 
+        </p>
+        <p class="text-green-500">
+          <span class="text-red-500">Hint:&nbsp;</span>
+          http
+          .oauth2ResourceServer(j->j.jwt().jwkSetUri("http:127.0.0.1:8080/oauth2/jwks"))
+        </p>
+      </div>
+
+     
+
+    </div>
+
+
+  </div>
+
+
+  
+</div>

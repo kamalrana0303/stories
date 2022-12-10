@@ -1,0 +1,11 @@
+<nav mat-tab-nav-bar class="tabGroup">
+    <a *ngFor="let tab of tabs" mat-tab-link [routerLink]="tab.route" routerLinkActive="active">
+        <div class="tab-content">
+            <mat-icon *ngIf="tab.icon" [svgIcon]="tab.icon"></mat-icon>
+            <span>{{tab.label}} </span>
+        </div>
+    </a>
+</nav>
+<div class="content">
+    <router-outlet></router-outlet>
+</div>

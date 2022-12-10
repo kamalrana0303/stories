@@ -1,0 +1,13 @@
+<div class="flex flex-row items-center justify-between">
+    <div class="mt-6 p-6 w-full">
+       <ng-template [cdkPortalOutlet]="_portalInstance$ | async"></ng-template> 
+    </div>
+  <div class="account-pic w-full">
+    <figure>
+        <picture>
+            <img src="../../assets/images/account.svg" height="600px" width="auto">
+        </picture>
+        <caption class="block">Story Account</caption>
+    </figure>
+  </div>
+</div>

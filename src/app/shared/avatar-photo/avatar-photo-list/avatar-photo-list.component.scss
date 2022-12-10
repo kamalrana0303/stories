@@ -17,10 +17,10 @@ section > div{
     @apply relative flex flex-row gap-2 w-fit;
 }
 section > div > div{    
-    @apply flex flex-row gap-2 w-28 overflow-hidden ml-5 mr-5 max-w-full;
+    @apply flex flex-row gap-2 w-14 overflow-hidden ml-5 mr-5 max-w-full;
 }
 section > div > div > img {
-    @apply rounded-full;
+    @apply rounded-full h-12 w-12;
 }
 .radio{
     @apply m-3 p-3 flex flex-row justify-center items-center;

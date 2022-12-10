@@ -1,0 +1,9 @@
+.header{
+    @apply text-center font-sans;
+}
+.body{
+    @apply flex flex-col justify-start items-center mt-4 mb-4;
+}
+.footer{
+    @apply flex flex-col justify-start items-center text-start text-xs font-thin m-2 pl-1 pr-1;
+}

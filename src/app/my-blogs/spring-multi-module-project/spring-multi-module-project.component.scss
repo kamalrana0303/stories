@@ -1,0 +1,64 @@
+.code{
+    
+    @apply  overflow-x-scroll ring-1 ring-purple-300 bg-purple-200 rounded-lg p-1 mb-2;
+}
+.dependency::after{
+    content: '</dependency>';
+    display: inline;
+}
+.dependency::before{
+    content: '<dependency>';
+    display: inline;
+}
+
+.dependecies::after{
+    content: '</dependencies>';
+    display: inline;
+}
+
+.dependecies::before{
+    content: '<dependencies>';
+    display: inline;
+}
+
+.dependencyManagement::after{
+    content: '</dependency-management>';
+    display: inline;
+}
+.version::after{
+    content: '</version>';
+    display: inline;
+}
+.version::before{
+    content: '<version>';
+    display: inline;
+}
+.body::before{
+    content: '{';
+    display: inline;
+}
+.body::after{
+    content: '}';
+    display: inline;
+}
+.dependencyManagement::before{
+    content: '<dependency-management>';
+    display: inline;
+}
+.groupId::before{
+    content: '<groupId>';
+}
+.groupId::after{
+    content: '</groupId>';
+}
+
+.artifactId::before{
+    content: '<artifactId>';
+}
+.artifactId::after{
+    content: '</artifactId>';
+}
+
+.comment{
+    @apply text-gray-400;
+}

@@ -1,0 +1,20 @@
+
+img{
+    height: 400px;
+    width: auto;
+}
+
+@media (max-width: 700px) {
+    .account-pic{
+        display: none;
+    }
+}
+picture{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// .mat-form-field-appearance-outline .mat-form-field-prefix, .mat-form-field-appearance-outline .mat-form-field-suffix{
+//     top: 0px !important;
+// }

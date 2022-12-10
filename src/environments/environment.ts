@@ -5,12 +5,31 @@
 export const environment = {
   production: false,
   oauth2: {
-    clientRoot: "http://localhost:4200/",
+    clientRoot: "http://127.0.0.1:4200/",
     apiRoot: "http://127.0.0.1:8080/",
-    stsAuthority: "https://dev-kl1uqnoiouturi57.us.auth0.com",
-    clientId:"7qCznsZWZ1d81wE8fQCJdBEr7owyZplp"
-  }
+    stsAuthority: "http://127.0.0.1:8080/",
+    clientId:"stories",
+    clientName: 'Stories',
+    client_secret: "stories-secret03031993",
+    issuer: "http://127.0.0.1:8080",
+    openIdConfig: ".well-known/openid-configuration"
+  },
+
+
 };
+
+// export const environment = {
+//   production: true,
+//   oauth2: {
+//     clientRoot: "http://localhost:4200/",
+//     client_secret:"",
+//     issuer: "",
+//     apiRoot: "http://localhost:8080/",
+//     stsAuthority: "https://dev-kl1uqnoiouturi57.us.auth0.com/",
+//     clientId:"7qCznsZWZ1d81wE8fQCJdBEr7owyZplp",
+//     openIdConfig: ".well-known/jwks.json"
+//   }
+// };
 
 /*
  * For easier debugging in development mode, you can import the following file

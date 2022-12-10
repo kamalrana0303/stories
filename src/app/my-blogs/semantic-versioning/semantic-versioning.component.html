@@ -1,0 +1,148 @@
+<div class="flex flex-row" scrollListener>
+  
+
+  <article class="mt-10">
+    <section class="card-primary" id="introduction">
+      <h1>Introduction</h1>
+      <p>
+        Developers and software engineers have long faced the problem of
+        "dependency hell." When a specific release of a dependency is installed
+        in one project, that dependency may cause breaking changes to your app.
+        The common solution is to freeze the dependency at a particular version
+        to avoid versioning issues.
+      </p>
+      <p>
+        However, your dependencies may also have dependencies! Of course, those
+        dependencies may also have dependencies, and so on. Releasing new
+        package changes can easily break multiple dependencies and cause
+        integrity or availability issues to your app.
+      </p>
+      <p>
+        Semantic versioning (or Semver) is the most common versioning strategy
+        implemented by libraries, apps, and frameworks. It involves one common
+        set of rules followed both by members of the open source community and
+        the industry alike. This guide will provide a high-level overview of
+        semantic versioning, including how developers can tag releases in Git
+        using semantic versioning standards.
+      </p>
+    </section>
+    <section class="card-primary" id="versioning">
+      <h1>Semantic Versioning 2.0.0</h1>
+      <p>
+        Semantic versioning increments three version numbers: major.minor.patch.
+        Each particular patch number is incremented based on a specific set of
+        conditions.
+      </p>
+
+      <div>
+        <h1>Major Versions</h1>
+        <p>
+          The major version is incremented when there are functions that are
+          incompatible with a previous major version. For example, when
+          incrementing from 1.5.2 to 2.0.0, some functions in version 1.5.2 may
+          no longer work or may have been deprecated in 2.0.0. This will signal
+          users of your app or library that there may be changes in the app that
+          will cause existing functions depending on your app to break if you
+          decide to upgrade. These changes are often referred to as breaking
+          changes.
+        </p>
+      </div>
+      <div>
+        <h1>Minor Versions</h1>
+        <p>
+          Minor versions are incremented when you add functionality to your app
+          or library. These new functions should not affect the functions in the
+          older version. Users of your app or library should not be required to
+          update their dependencies because minor versions are meant to be
+          additive, not corrective. For example, if you upgrade your app from
+          2.1.42 to 2.2.0, your existing apps should still work as none of the
+          changes should be breaking. This is often referred to as backward
+          compatible.
+        </p>
+      </div>
+      <div>
+        <h1>Patch Versions</h1>
+        <p>
+          Patch versions are incremented when there is no additional
+          functionality added to the app or library, and the changes are still
+          backward compatible. Usually, patch versions are used to indicate bug
+          fixes, so developers often upgrade to newer minor versions to ensure
+          backward compatibility, yet get the latest functional and
+          security-related updates.
+        </p>
+      </div>
+    </section>
+    <section class="card-primary" id="annotation">
+      <h1>Semantic Versioning Annotations</h1>
+      <p>
+        You may have other versioning requirements that you need to meet, such
+        as alpha releases or metadata information. If you have unreleased apps
+        and libraries, you may also want to version them differently. Semver
+        supports both of these use cases.
+      </p>
+      <div>
+        <h1>Metadata and Pre-release Versions</h1>
+        <p>
+          Metadata can be added to semantic versions using the plus (+) symbol.
+          Code versions that differ only in metadata have the same precedence.
+          This means that version 1.4.2+20130313144700 should function
+          identically to version 1.4.2+201309868639. This metadata is normally
+          used for build information and must be written in ASCII compatible
+          characters. Similarly, pre-release versions can be indicated by
+          appending a hyphen (-) and the name of the version (e.g. 1.6.4-beta).
+          Pre-release versions are meant to inform the users of your app or
+          library that this version may not yet be stable.
+        </p>
+      </div>
+      <div>
+        <h1>Intial Development</h1>
+        <p>
+          If your code is currently in the initial stages of development, you
+          may label your code as version 0.x.x. Version 0 is normally not
+          considered to be stable, and ideally, it should not be used in
+          production without reading the changelog of every increment. This is
+          because every increment in any area may result in any change. Some
+          open source projects use this strategy because of large changes in
+          their codebase after every iteration.
+        </p>
+      </div>
+    </section>
+    <section class="card-primary" id="code">
+      <h1>Versioning Your Code</h1>
+      <p>
+        Now that you understand a proper versioning strategy for your apps and
+        libraries, you can also version the code in your source code management
+        system. Git supports versioning your code via Git Tags. The following
+        snippet tags your code as version 1.0.0.
+      </p>
+      <div class="code">
+        <code>git tag 1.0.0</code>
+      </div>
+
+      <p>
+        This will link the current commit to the given tag number. You can
+        easily check out the release by simply running the following snippet.
+      </p>
+      <div class="code">
+        <code>git checkout 1.0.0</code>
+      </div>
+      <p>
+        You can use tags in combination with semantic versioning to keep track
+        of your releases to ensure that others depending on your app or library
+        can identify the general meaning of each version.
+      </p>
+    </section>
+    <section class="card-primary" id="conclusion">
+      <h1>Conclusion</h1>
+      <p>
+        Semver is one of many potential versioning strategies, however, it is
+        the most commonly used today in a variety of industries and open source
+        projects. Internally, it can help ensure that your APIs are still
+        compatible with one another. At the same time, if you are an avid open
+        source contributor, others may rely on this versioning strategy to
+        determine when they want to install a newer version of the dependency
+        for their app.
+      </p>
+    </section>
+  </article>
+</div>

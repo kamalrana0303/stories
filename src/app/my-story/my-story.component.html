@@ -19,7 +19,19 @@
         </svg>  
     </div>
     <div class="mt-12" [ngClass]="{show: showMore, hide: !showMore}">
-        <avatar-photo-list [avatars]="avatars"></avatar-photo-list>
+        <avatar-photo-list [avatars]="avatars" (selected)="selectAvatar($event)"></avatar-photo-list>
+    </div>
+
+    <div class="text-purple-700 text-center">
+        <div [ngClass]="{block: selectedAvatarIndex == 0, hidden: selectedAvatarIndex != 0}"  >
+            <h1>Birthplace</h1>
+            <p>Delhi, Born on 3rd March of 1993</p>
+        </div>
+        <div [ngClass]="{block: selectedAvatarIndex == 1, hidden: selectedAvatarIndex != 1}" >
+            <h1>Hometown</h1>
+            <p>Uk (Uttrakhand))</p>
+        </div>
+        
     </div>
 </section>
 <section>

@@ -1,0 +1,25 @@
+<form class="control" [formGroup]="fg">
+  <mat-form-field
+    appearance="outline"
+    class="w-full flex flex-col justify-center"
+  >
+    <mat-label>email</mat-label>
+    <input formControlName="email" matInput type="email" />
+    <span matSuffix>@gmail.com</span>
+    <mat-hint>You can use letters, numbers & periods</mat-hint>
+  </mat-form-field>
+</form>
+<div class="flex flex-row justify-end mt-5">
+  <button mat-stroked-button (click)="sendOtp()" [disabled]="disabled">
+    <div class="flex flex-row gap-4 justify-center items-center">
+      <div>Send Otp</div>
+      <mat-icon svgIcon="paperline-airplane"></mat-icon>
+    </div>
+  </button>
+</div>
+<div class="flex flex-row justify-center items-center" *ngIf="error">
+    <div class="bg-red-200 ring-1 ring-red-600 text-red-800 pt-3 pb-3 pl-4 pr-4 rounded-full">
+        {{error.status}} : {{error.error?.error}}
+    </div>
+</div>
+

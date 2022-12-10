@@ -1,0 +1,1 @@
+export const AuthContextError = "please ensure auth context is initialized"

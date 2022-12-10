@@ -1,12 +1,13 @@
 import { ViewportScroller } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Content } from 'src/app/my-self/my-self.component';
 export interface Source{
   path: string;
   media: string;
 }
 export interface Avatar{
    img:string | undefined;
-   srcset:Source[]
+   srcset:Source[],
 }
 @Component({
   selector: 'avatar-photo-list',
@@ -16,6 +17,8 @@ export interface Avatar{
 export class AvatarPhotoListComponent implements OnInit {
   @Input()
   avatars: Avatar[] = []
+  @Output()
+  selected:EventEmitter<number> = new EventEmitter<number>();
   index:number = 0;
   constructor(private scroller:ViewportScroller) { }
 
@@ -32,7 +35,7 @@ export class AvatarPhotoListComponent implements OnInit {
     if(this.index < 0){
       this.index = this.avatars.length - 1;
     }
-    
+    this.selected.emit(this.index);
   }
 
   next(index:number){
@@ -45,5 +48,7 @@ export class AvatarPhotoListComponent implements OnInit {
     if(this.index  > this.avatars.length - 1){
       this.index =0;
     }
+    this.selected.emit(this.index);
   }
+
 }

@@ -1,0 +1,133 @@
+<div>
+    <div class="card">
+        <h1 class="text-center font-bold mb-8">About Angular Reactive Forms</h1>
+        <div class="code">
+            <h1>Creating the form controls</h1>
+            <code>
+                <pre>
+this.customerForm = this.fb.group(
+    <span class="body">
+        firstname: '',
+        sendCatalog:true
+    </span>)
+                </pre>
+                
+            </code>
+
+            <code>
+                <pre>
+this.customerForm = this.fb.group(
+    <span class="body">
+        firstname: 'n/a',   <span class="comment">/**default value for control**/</span>
+        sendCatalog:true
+    </span>)
+                </pre>
+                
+            </code>
+
+            <code>
+                <pre>
+this.customerForm = this.fb.group(
+    <span class="body">
+        firstname: [''],   <span class="comment">/**default value for control**/</span>
+        sendCatalog:[true]
+    </span>)
+                </pre>
+                
+            </code>
+        </div>
+        <div class="code">
+            <h1>Setting Built in Validation Rules</h1>
+            <code>
+                <pre>
+this.customerForm = this.fb.group(
+    <span class="body">
+        firstname: ['', Validators.required],
+        sendCatalog:true
+    </span>)
+                </pre>
+                
+            </code>
+            <code>
+                <pre>
+this.customerForm = this.fb.group(
+    <span class="body">
+        firstname: ['',[ Validators.required,Validators.minLength(3)]],  <span class="comment"> /** Array of Validation rules**/</span>
+        sendCatalog:true
+    </span>)
+                </pre>
+                
+            </code>
+        </div>
+        <div class="code">
+            <h1>Adjusting Validation Rules at Runtime</h1>
+            <code>
+                <pre>
+myControls.setValidators(Validators.required);
+myControls.setValidators([Validators.required,Validators.minLength(3)])
+myControls.clearValidators()
+myControls.updateValueAndValidity(); <span class="comment">/**When we change validators and we want validation to be acc to new validators**/</span>    
+
+<div>
+   &lt;input class='form-control' id='phone-id' type='tel' placeholder='Phone' formControlName='phone'
+        [ngClass]="<span class="body">'is-invalid':!customerForm.get('phone').valid</span>"/&gt;
+    &lt;span class='input-feedback'&gt;
+        &lt;span *ngIf="customerForm.get('phone').errors?.required"&gt;
+            Please enter your phone number.
+        &lt;/span&gt;
+    &lt;/span&gt;
+</div>
+<div>
+    &lt;div class='form-group row mb-2'&gt;
+        &lt;label class='col-md-2 col-form-label pt-0'&gt;Send Notification &lt;/label&gt;
+        &lt;div class='col-md-8'&gt;
+            &lt;div class='form-check form-check-inline'&gt;
+                &lt;label class='form-check-label'&gt;
+                    &lt;input class='form-check-input'
+                        type='radio'
+                        value='email'
+                        formControlName='notification'
+                        (click)="setNotification('email')"&gt; Email
+                &lt;/label&gt;
+            &lt;/div&gt;
+
+            &lt;div class='form-check form-check-inline'&gt;
+                &lt;label class='form-check-label'&gt;
+                    &lt;input class='form-check-input'
+                        type='radio'
+                        value='text'
+                        formControlName='notification'
+                        (click)="setNotification('text')"&gt; Email
+                &lt;/label&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+</div>
+setNotification(notifyVia:string):void
+<span class="body">
+    const phoneControl = this.custFormControl.get('phone');
+    if(notifyVia == 'text')
+    <span class="body">
+        phoneControl.setValidators(Validators.required);
+    </span>else<span class="body">
+        phoneControl.clearValidators();
+    </span>
+    phoneControl.updateValueAndValidity();
+</span>
+                </pre>
+            </code>
+        </div> 
+        <div class="code">
+            <h1> Custom Validators</h1>
+            <code>
+                <pre>
+ function myValidator(c:AbstractControl):<span class="body">[key:string]:boolean</span> |null<span class="body">
+    if(somethingIsWrong)<span class="body">
+        return <span class="body">'myValidator':true</span>
+    </span>
+    return null;
+ </span>                   
+                </pre>
+            </code>
+        </div>
+    </div>
+</div>

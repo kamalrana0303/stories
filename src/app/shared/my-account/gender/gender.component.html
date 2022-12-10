@@ -1,0 +1,38 @@
+<div class="pt-8 flex flex-col justify-start items-center">
+    <div
+      class="p-5 w-full border-b-2 border-b-gray-300 mb-5 flex flex-row justify-start gap-5"
+    >
+      <mat-icon
+        svgIcon="backspace"
+        class="cursor-pointer"
+        routerLink="/account/personal-info"
+      ></mat-icon>
+      <h1>Gender</h1>
+    </div>
+    <div class="flex flex-col w-1/2 max-md:w-full p-4">
+        <div *ngIf="errorMessage" class="bg-red-100 p-2 rounded-lg ring-1 ring-red-400 text-center">
+            {{errorMessage.error}}
+        </div>
+      <form [formGroup]="fg" class="flex flex-col gap-4">
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender" [(ngModel)]="currentGender.gender" color="primary">
+                <mat-option value="MALE">MALE</mat-option>
+                <mat-option value="FEMALE">FEMALE</mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+        <div class="flex flex-row justify-end items-center">
+          <div class="flex flex-row gap-4">
+            <button mat-stroked-button (click)="save()" class="bg-blue-700 text-white font-bold" [disabled]="!isDirty">
+              Save
+            </button>
+            <button mat-stroked-button (click)="cancel()">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {{fg.value | json}}

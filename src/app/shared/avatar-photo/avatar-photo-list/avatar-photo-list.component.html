@@ -7,7 +7,7 @@
                      <img [src]="avatar.img" height="50" width="50">
                 </picture>
              </figure> -->
-             <img *ngFor="let avatar of avatars;let i=index" [id]="'avatar-'+i" [src]="avatar.img" height="50px" width="50px" (click)="index = i">
+             <img *ngFor="let avatar of avatars;let i=index" [id]="'avatar-'+i" [src]="avatar.img" height="50" width="50" (click)="index = i">
         </div>
         <div class="next" (click)="next(index)">></div>
     </div> 
@@ -15,5 +15,6 @@
         <div class="radio">
             <div *ngFor="let x of avatars; let j = index"  [ngClass]="{fill: j==index, outline: j!=index}"></div>
         </div> 
+        
     </div>  
 </section>

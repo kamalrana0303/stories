@@ -1,0 +1,19 @@
+<div class="flex flex-col items-center">
+    <div class="header">
+        <div class="relative block">
+            <div class="mx-auto object-cover rounded-full h-20 w-20 bg-purple-200 text-purple-700 flex flex-col justify-center items-center">
+                <div>
+                    {{context?.userProfile?.username?.substring(0,1) | titlecase}}
+                </div>
+            </div>
+        </div>
+        <h1 class="text-2xl">Welcome, {{context?.userProfile?.username | titlecase}}</h1>
+        <p class="font-thin text-sm">Manage your info, privacy, and security to make Google work better for you.</p>
+    </div>
+    <div class="body">
+        
+    </div>
+    <div class="footer">
+        Only you can see your settings. You might also want to review your settings for Maps, Search, or whichever Google services you use most. Google keeps your data private, safe, and secure.
+    </div>
+</div>

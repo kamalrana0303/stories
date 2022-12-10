@@ -1,0 +1,19 @@
+.code{
+    
+    @apply  overflow-x-scroll ring-1 ring-purple-300 bg-purple-200 rounded-lg p-1 mb-2;
+}
+.code> h1{
+    @apply text-center font-semibold mb-4;
+}
+.comment{
+    @apply text-gray-400;
+}
+
+.body::before{
+    content: '{';
+    display: inline;
+}
+.body::after{
+    content: '}';
+    display: inline;
+}

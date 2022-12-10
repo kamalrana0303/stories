@@ -1,0 +1,77 @@
+<div class="flex flex-col gap-5 pl-4 pr-4">
+  <div>
+    <h1 class="text-center text-2xl font-sans">Personal Info</h1>
+    <p class="text-center font-thin text-sm">
+        Info about you and your preferences across {{ env.oauth2.clientName }}
+    </p>
+  </div>
+  <div class="flex flex-row mt-5">
+    <div>
+      <div class="flex flex-row justify-between items-center gap-3">
+        <h1 class="text-xl font-sans">Your profile in {{ env.oauth2.clientName }}</h1>
+        <figure class="figure-sm">
+            <picture>
+                <source media="(max-width:1080px)" srcset="../../../../assets/images/png/profile_spot_visible_128x128.png">
+                <source media="(min-width:1080px)" srcset="../../../../assets/images/png/profile_scene_visible_720x256.png">
+                <img src="../../../../assets/images/png/profile_spot_visible_128x128.png" width="auto">
+            </picture>
+        </figure>
+      </div>
+      <div class="font-thin text-sm">
+        Personal info and options to manage it. You can make some of this info,
+        like your contact details, visible to others so they can reach you
+        easily. You can also see a summary of your profiles.
+    </div>
+    
+    </div>
+    <figure class="figure-lg">
+        <picture>
+            <!-- <source media="(max-width: 1080px)" srcset="../../../../assets/images/png/profile_spot_visible_128x128.png"> -->
+            <source media="(min-width:1080px)" srcset="../../../../assets/images/png/profile_scene_visible_720x256.png">
+            <img src="../../../../assets/images/png/profile_scene_visible_360x128.png">
+        </picture>
+    </figure>
+  </div>
+
+  <div class="ring-1 rounded-md ring-gray-300 p-4">
+    <h1 class="mt-5 font-sans text-xl">Basic Info</h1>
+    <p class="font-thin text-xs">Some info may be visible to other people</p>
+    <div class="my-list-item">
+        <div class="list">
+            <h1>Name</h1>
+            <div>
+                <p>{{context?.userProfile?.username |titlecase}}</p>
+                <mat-icon svgIcon="chevronRight" routerLink="name"></mat-icon>
+            </div>
+           
+        </div>
+        
+    </div>
+    <div class="my-list-item">
+        <div class="list">
+            <h1>Gender</h1>
+            <div>
+                <p>
+                    <ng-container *ngIf="context && context.userProfile && context.userProfile.gender">
+                        {{context.userProfile.gender}}
+                    </ng-container>
+                </p>
+                <mat-icon svgIcon="chevronRight" routerLink="gender" ></mat-icon>
+            </div>   
+        </div>
+    </div>
+    <div class="my-list-item">
+        <div class="list">
+            <h1>Birthday</h1>
+            <div>
+                <p>{{context?.userProfile?.dob | date}}</p>
+                <mat-icon svgIcon="chevronRight" routerLink="dob"></mat-icon>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+
+</div>
