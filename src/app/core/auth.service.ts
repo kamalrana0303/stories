@@ -73,11 +73,11 @@ export class AuthService {
 
   isLoggedIn():Promise<boolean>{
     return this._userManager.getUser().then(user=> {
-      const currentUser = !!user && !user.expired;
-      if(this._user !== user){
+      const currentUser = !!user && !user.expired;    //user exist and user is not expired
+      if(this._user !== user){    //if user is changed
         this._loginChangedSubject.next(currentUser);
       }
-      if(currentUser && !this.authContext){
+      if(currentUser && !this.authContext){   // auth context is not initialized
        
         this.loadSecurityContext();
       }
@@ -125,6 +125,7 @@ export class AuthService {
         this.authContext.claims = context.claims;
         this.authContext.userProfile = context.userProfile;
         this.authContext.sub = context.sub;
+        this._loginChangedSubject.next(true)
       })
   }
 

@@ -1,0 +1,64 @@
+
+<div class="group relative">
+    <div class="cursor-pointer absolute md:relative top-0 right-0 z-50 flex flex-row gap-2 pr-2 pt-1 pb-2" *ngIf="product && product.productId && product.productId != '0'">
+        <p class="text-sm font-medium text-gray-900" (click)="editProduct()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+              </svg>
+              
+        </p>
+        <p>|</p>
+        <p class="text-sm font-medium text-gray-900" (click)="uploadImage()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+              </svg>
+        </p>
+    </div>
+  <div
+    class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80"
+  >
+    <img 
+      [routerLink]="[product.productId]"
+      *ngIf="product && product.productId && product.productId != '0' && product.images[0]"
+      [src]="product.images[0].link"
+      [alt]="product.title"
+      class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+    />
+    <div
+      *ngIf="product && product.productId == '0'"
+        (click)="editProduct()"
+      class="cursor-pointer flex flex-col justify-center items-center h-80 w-full object-cover object-center lg:h-full lg:w-full"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="cursor-pointer  z-50 w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 4.5v15m7.5-7.5h-15"
+        />
+      </svg>
+    </div>
+  </div>
+  <div class="mt-4 flex justify-between">
+    <div>
+      <h3 class="text-sm text-gray-700">
+        <p>
+          <span aria-hidden="true" class="inset-0"></span>
+          {{ product?.description | titlecase }}
+        </p>
+      </h3>
+      <p class="mt-1 text-sm text-gray-500">{{ product?.name }}</p>
+    </div>
+    <p class="text-sm font-medium text-gray-900">
+      {{ product?.offeredPrice
+      }}<span *ngIf="product?.productId != '0'">&nbsp;&#8377;</span>
+    </p>
+  </div>
+  
+</div>

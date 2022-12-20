@@ -1,0 +1,19 @@
+.wizard{
+    border-radius: 8px 0 0 0px;
+}
+.wizard a:last-child{
+    border-radius: 0 8px 0px 0;
+}
+.wizard:active{
+    @apply bg-purple-400 text-white;
+}
+.wizard .active::after{
+    @apply border-l-purple-400;
+}
+.active{
+    @apply border-b-2 bg-purple-200;
+}
+
+button:disabled{
+    @apply cursor-not-allowed;
+}

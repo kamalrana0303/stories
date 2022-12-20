@@ -1,3 +1,8 @@
+<div class="flex flex-row justify-center items-center mt-4 mb-4" *ngIf="error">
+  <div class="bg-red-200 ring-1 ring-red-600 text-red-800 pt-1 pb-1 pl-4 pr-4 rounded-full">
+      {{error.error}}
+  </div>
+</div>
 <form class="control" [formGroup]="fg">
   <mat-form-field
     appearance="outline"
@@ -17,9 +22,5 @@
     </div>
   </button>
 </div>
-<div class="flex flex-row justify-center items-center" *ngIf="error">
-    <div class="bg-red-200 ring-1 ring-red-600 text-red-800 pt-3 pb-3 pl-4 pr-4 rounded-full">
-        {{error.status}} : {{error.error?.error}}
-    </div>
-</div>
+
 

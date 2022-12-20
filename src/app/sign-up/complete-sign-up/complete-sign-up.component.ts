@@ -1,5 +1,5 @@
 import { ComponentPortal } from '@angular/cdk/portal';
-import {  Component, Inject, OnInit } from '@angular/core';
+import {  ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -20,7 +20,7 @@ import { SignUpService } from '../sign-up.service';
   styleUrls: ['./complete-sign-up.component.scss']
 })
 export class CompleteSignUpComponent implements OnInit {
-  error:ErrorResponse | undefined;
+  error:Error | any;
   disabled:boolean =false;
   showPassword:boolean =false;
   user:UserDetailRM = new UserDetailRM();
@@ -40,7 +40,8 @@ export class CompleteSignUpComponent implements OnInit {
   private portalBridgeService:PortalBridgeService,
   private fb:FormBuilder,
   private signUpService:SignUpService,
-  private router:Router
+  private router:Router,
+  private cdr:ChangeDetectorRef
   ) { 
     this.user.email = this.data.email;
   }
@@ -48,7 +49,10 @@ export class CompleteSignUpComponent implements OnInit {
   ngOnInit(): void {
     this.matIconRegistry.addSvgIcon('edit', this.domSanitizer.bypassSecurityTrustResourceUrl(`../../../assets/svgs/edit.svg`))
   }
-
+  ngAfterViewInit(){
+    this.fg.reset();
+    this.cdr.detectChanges();
+  }
 
   editEmailId(){
     this.portalBridgeService.setPortal(new ComponentPortal(EmailComponent));
@@ -63,10 +67,13 @@ export class CompleteSignUpComponent implements OnInit {
       this.disabled =false;
       return EMPTY
     })).subscribe(user=> {
+      console.log(user)
+      console.log("successfully user signup")
       this.disabled =false;
-      this.router.navigate(['account'])
+      this.router.navigate(['/account'])
     });
     }
   }
+
 }
 

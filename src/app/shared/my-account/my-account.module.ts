@@ -12,6 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MyAccountEditPageWithoutMenuComponent } from './my-account-edit-page-without-menu/my-account-edit-page-without-menu.component';
 import { GenderComponent } from './component/gender/gender.component';
 import { DobComponent } from './component/dob/dob.component';
+import { AddressListComponent } from './component/address-list/address-list.component';
+import { AddressComponent } from './component/address/address.component';
 const material =[
   MatTabsModule,
     LayoutModule,
@@ -35,7 +37,9 @@ const material =[
     UserNameComponent,
     MyAccountEditPageWithoutMenuComponent,
     GenderComponent,
-    DobComponent
+    DobComponent,
+    AddressListComponent,
+    AddressComponent
   ],
   imports: [
     CommonModule,

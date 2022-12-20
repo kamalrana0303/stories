@@ -1,3 +1,4 @@
+import { Address } from "./address";
 import { GENDEREnum } from "./gender";
 
 export class UserProfile{
@@ -8,4 +9,5 @@ export class UserProfile{
     email:string | undefined;
     gender:GENDEREnum | undefined;
     dob: string | undefined;
+    address:Address[] | undefined;
 }

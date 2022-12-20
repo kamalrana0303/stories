@@ -1,0 +1,22 @@
+
+.add {
+    @apply w-1/5 h-1/5 text-gray-300;
+}
+.address-card{
+    max-width: 250px;
+}
+.address-details{
+    @apply font-extralight;
+}
+
+@media (max-width:500px) {
+    .address-card{
+        max-width: 100%;
+    }
+   
+}
+@media (max-width:850px) {
+    .res{
+        justify-content: center;
+    }
+}

@@ -7,6 +7,7 @@ section{
 form{
     @apply  grid grid-cols-2 grid-rows-5 gap-4 max-w-2xl items-center;
 }
+
 form input,select, textarea {
     @apply rounded-lg 
     font-light 

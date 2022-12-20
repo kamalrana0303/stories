@@ -43,7 +43,7 @@ const material=[
     SigninRedirectCallbackComponent,
     SignoutRedirectCallbackComponent,
     UnauthorizedComponent,
-    WithMyHeaderComponent,
+    WithMyHeaderComponent
   
   ],
   imports: [

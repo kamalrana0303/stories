@@ -19,13 +19,14 @@ import { PortalBridgeService } from '../portal-bridge.service';
 })
 export class EmailComponent implements OnInit {
   disabled:boolean = false;
-  error:ErrorResponse| undefined;
+  error:Error| any;
   fg:FormGroup = this.fb.group({email: []})
   completeSignUp:ComponentPortal<CompleteSignUpComponent> | undefined;
   
   constructor(private injector:Injector,private matIconRegistry: MatIconRegistry,private otpService:OtpService,private portalBridgeService:PortalBridgeService, private domSanitizer: DomSanitizer, private fb:FormBuilder) { }
 
   ngOnInit(): void {
+    
     this.matIconRegistry.addSvgIcon('paperline-airplane', this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/svgs/paper-airline.svg"));
   }
 
@@ -43,16 +44,18 @@ export class EmailComponent implements OnInit {
   sendOtp(){
     this.disabled = true;
     this.error = undefined;
-    this.otpService.sendOtp(this.fg.value).pipe(catchError((error:ErrorResponse)=>{
+    this.otpService.sendOtp(this.fg.value).pipe(catchError((error)=>{
       this.disabled = false;
       this.error = error;
       return EMPTY;
     })).subscribe(otp=> {
       this.disabled =false;
+      
       this.completeSignUp  = new ComponentPortal(CompleteSignUpComponent,null,
-        this.createInjector(otp, SIGN_UP_REQUESTED_OTP_PORTAL_DATA));
+      this.createInjector(otp, SIGN_UP_REQUESTED_OTP_PORTAL_DATA));
       this.portalBridgeService.setPortal(this.completeSignUp);
     })
   }
+ 
 
 }

@@ -12,7 +12,7 @@ import { Tabs } from 'src/app/model/tabs';
 export class MyAccountPageComponent implements OnInit {
   tabs: Tabs[]=[
     {
-      label: 'Home',
+      label: 'Account',
       route: 'home',
       icon: 'home'
     },
@@ -21,6 +21,11 @@ export class MyAccountPageComponent implements OnInit {
       route: 'personal-info',
       icon: 'info'
     },
+    {
+      label: 'Your address',
+      route: 'addresses',
+      icon: 'map-pin'
+    }
     
   ]
   constructor(private matIconRegistry: MatIconRegistry,private domSanitizer: DomSanitizer) { }
@@ -28,6 +33,7 @@ export class MyAccountPageComponent implements OnInit {
   ngOnInit(): void {
     this.matIconRegistry.addSvgIcon('home', this.domSanitizer.bypassSecurityTrustResourceUrl(`../../../../assets/svgs/home.svg`))
     this.matIconRegistry.addSvgIcon('info', this.domSanitizer.bypassSecurityTrustResourceUrl(`../../../../assets/svgs/info.svg`))
+    this.matIconRegistry.addSvgIcon('map-pin',this.domSanitizer.bypassSecurityTrustResourceUrl(`../../../../assets/svgs/map-pin.svg`))
  
   }
 

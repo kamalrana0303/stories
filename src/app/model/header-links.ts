@@ -1,5 +1,6 @@
-
 export interface HeaderLink {
-    link:string;
-    name:string;
+  link: string;
+  name: string;
+  isLoggedInReq: boolean;
+  isAdminReq: boolean;
 }

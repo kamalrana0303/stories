@@ -26,6 +26,9 @@ const routes: Routes = [
     path: '', component:WithMyHeaderComponent, children: [
       {
         path: 'account', loadChildren: ()=> import('./shared/my-account/my-account.module').then(m=>m.MyAccountModule)
+      },
+      {
+        path: 'console', loadChildren: ()=> import('./shared/console-management/console-management.module').then(m=>m.ConsoleManagementModule)
       }
     ]
   },

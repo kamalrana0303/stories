@@ -1,0 +1,97 @@
+<div
+  class="p-5 w-full border-b-2 border-b-purple-300 flex flex-row justify-start gap-5 sticky top-11"
+>
+  <mat-icon svgIcon="backspace" class="cursor-pointer text-purple-500" routerLink="/account/addresses"></mat-icon>
+  <h1>{{pageTitle | uppercase}}</h1>
+</div>
+<div class="address-form">
+  <div class="container">
+    <form [formGroup]="fg">
+      <div>
+        <label for="name"> Name </label>
+        <input name="name" formControlName="name" [(ngModel)]="currentAddress.name" />
+      </div>
+
+      <div>
+        <label for="country"> Country </label>
+        <select name="state" formControlName="country" [(ngModel)]="currentAddress.country">
+          <option [value]="''"><span>--select--</span></option>
+          <ng-container *ngFor="let s of countryCodes">
+            <option [value]="s.code">{{ s.name }}</option>
+          </ng-container>
+        </select>
+      </div>
+
+      <div class="address">
+        <label for="address">
+          Flat, House no., Building, Company, Apartment
+        </label>
+        <input
+          name="email"
+          formControlName="address"
+          [(ngModel)]="currentAddress.address"
+          type="text"
+        />
+      </div>
+      <div>
+        <label for="state"> State </label>
+        <select name="state" formControlName="state" [(ngModel)]="currentAddress.state">
+          <option [value]="''"><span>--select--</span></option>
+          <ng-container *ngFor="let s of stateAndUTs">
+            <option [value]="s.code">{{ s.name }}</option>
+          </ng-container>
+        </select>
+      </div>
+      <div>
+        <label for="city"> city </label>
+        <input name="city" formControlName="city" [(ngModel)]="currentAddress.city" />
+      </div>
+      <div>
+        <label for="pincode"> Pincode </label>
+        <input
+          name="pincode"
+          formControlName="pincode"
+          type="text"
+          [(ngModel)]="currentAddress.pincode"
+        />
+      </div>
+      <div>
+        <label for="contactNo"> Contact no </label>
+        <input
+          name="phoneNo"
+          formControlName="contactNo"
+          type="tel"
+          [(ngModel)]="currentAddress.contactNo"
+          (keypress)="validatePhoneNo($event)"
+          maxlength="10"
+          minlength="10"
+        />
+      </div>
+      <div>
+        <label for="alt"> Alternate No </label>
+        <input
+          name="alt"
+          formControlName="altNo"
+          type="tel"
+          (keypress)="validatePhoneNo($event)"
+          maxlength="10"
+          minlength="10"
+          [(ngModel)]="currentAddress.altNo"
+        />
+      </div>
+      <div>
+        <label for="landMark"> Landmark </label>
+        <input
+          name="pincode"
+          formControlName="landMark"
+          type="text"
+          [(ngModel)]="currentAddress.landmark"
+        />
+      </div>
+
+      <div id="callback-submit">
+        <button type="submit" (click)="submit()" [disabled]="!isDirty">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,191 @@
+<div class="m-2">
+  <div class="md:grid md:grid-cols-3 md:gap-6">
+    <div class="md:col-span-1">
+      <div class="px-4 sm:px-0">
+        <h3 class="text-lg font-medium leading-6 text-gray-900">Product</h3>
+        <p class="mt-1 text-sm text-gray-600">
+          This information will be displayed publicly so be careful what you
+          share.
+        </p>
+      </div>
+    </div>
+    <div class="mt-5 md:col-span-2 md:mt-0">
+      <form [formGroup]="fg">
+        <div class="shadow sm:overflow-hidden sm:rounded-md">
+          <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
+            <div class="grid grid-cols-3 gap-6">
+              <div class="col-span-3 sm:col-span-2">
+                <label
+                  for="product-title"
+                  class="block text-sm font-medium text-gray-700"
+                  >Product Title</label
+                >
+                <div class="mt-1 flex rounded-md shadow-sm">
+                  <input
+                    [(ngModel)]="product.title"
+                    formControlName="title"
+                    type="text"
+                    name="product-title"
+                    id="product-title"
+                    class="block p-2 w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-6">
+              <div class="col-span-3 sm:col-span-2">
+                <label
+                  for="product-name"
+                  class="block text-sm font-medium text-gray-700"
+                  >Product Name</label
+                >
+                <div class="mt-1 flex rounded-md shadow-sm">
+                  <input
+                    [(ngModel)]="product.name"
+                    formControlName="name"
+                    type="text"
+                    name="product-name"
+                    id="product-name"
+                    class="block p-2 w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-6">
+              <div class="col-span-3 sm:col-span-2">
+                <label
+                  for="product-code"
+                  class="block text-sm font-medium text-gray-700"
+                  >Product code</label
+                >
+                <div class="mt-1 flex rounded-md shadow-sm">
+                  <input
+                    [(ngModel)]="product.productCode"
+                    formControlName="productCode"
+                    type="text"
+                    name="product-code"
+                    id="product-code"
+                    class="block p-2 w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="description"
+                class="block text-sm font-medium text-gray-700"
+                >Description</label
+              >
+              <div class="mt-1">
+                <textarea
+                  [(ngModel)]="product.description"
+                  formControlName="description"
+                  id="description"
+                  name="description"
+                  rows="3"
+                  class="p-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                ></textarea>
+              </div>
+              <p class="mt-2 text-sm text-gray-500">
+                Brief description for your product.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-6">
+              <div class="col-span-3 sm:col-span-2">
+                <label
+                  for="offeredPrice"
+                  class="block text-sm font-medium text-gray-700"
+                  >Offered Price</label
+                >
+                <div class="mt-1 flex rounded-md shadow-sm">
+                  <input
+                    [(ngModel)]="product.offeredPrice"
+                    formControlName="offeredPrice"
+                    id="offered-price"
+                    name="offered-price"
+                    type="number"
+                    class="p-2 mt-1 w-full block rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-6">
+              <div class="col-span-3 sm:col-span-2">
+                <label
+                  for="mrp"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Mrp</label
+                >
+                <div class="mt-1 flex rounded-md shadow-sm">
+                  <input
+                    [(ngModel)]="product.mrp"
+                    formControlName="mrp"
+                    id="mrp"
+                    name="mrp"
+                    type="number"
+                    class="p-2 mt-1 w-full block rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white" formGroupName="measurement">
+              <div name="measurement" class="grid grid-cols-6 gap-6">
+                <div class="col-span-6 sm:col-span-3">
+                  <label class="block text-sm font-medium text-gray-700"
+                    >Length</label
+                  >
+                  <input
+                    [(ngModel)]="product.measurement.length"
+                    type="number"
+                    formControlName="length"
+                    class="p-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  />
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                  <label class="block text-sm font-medium text-gray-700"
+                    >Width</label
+                  >
+                  <input
+                    [(ngModel)]="product.measurement.breadth"
+                    type="number"
+                    formControlName="breadth"
+                    class="p-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  />
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                  <label class="block text-sm font-medium text-gray-700"
+                    >Height</label
+                  >
+                  <input
+                    [(ngModel)]="product.measurement.height"
+                    type="number"
+                    formControlName="height"
+                    class="p-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  />
+                </div>
+                <div class="col-span-6 sm:col-span-3">
+                  <label class="block text-sm font-medium text-gray-700"
+                    >Wg</label
+                  >
+                  <input
+                    [(ngModel)]="product.measurement.weight"
+                    type="number"
+                    formControlName="weight"
+                    class="p-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--save or cancel button-->
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

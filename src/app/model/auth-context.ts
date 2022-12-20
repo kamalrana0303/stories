@@ -6,8 +6,7 @@ export class AuthContext {
     userProfile: UserProfile | undefined;
     sub:string | undefined;
 
-    get isAdmin(){
-        
+    get isAdmin():boolean{
         return !!this.claims  && !!this.claims.find(c=> {return c.type === 'ROLE' && c.value === 'ADMIN'})
     }
 
