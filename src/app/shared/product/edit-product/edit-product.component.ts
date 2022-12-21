@@ -42,6 +42,7 @@ export class EditProductComponent{
   }
 
   saveProduct(){
+    alert(this.product?.productId)
     if(this.product?.productId == '0'){
       this.productService.addProduct(this.product).pipe(catchError((error)=> {
         this.errorMessage = <any> error;

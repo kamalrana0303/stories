@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/core/product.service';
 import { Product, ProductImage } from 'src/app/model/product';
 
 @Component({
@@ -12,13 +13,14 @@ export class UploadFileComponent implements OnInit {
   selectedFiles: File[] = [];
   selectedFileNames: any[] = [];
   previews: any[] = [];
-  constructor() {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {}
 
   selectFile(event: any) {
+    
     this.selectedFiles = event.target.files;
-    if (this.selectedFiles && this.selectedFiles[0]) {
+    if (event.target.files.length > 0) {
       const numberOfFiles = this.selectedFiles.length;
       for (let i = 0; i < numberOfFiles; i++) {
         const reader = new FileReader();
@@ -27,16 +29,15 @@ export class UploadFileComponent implements OnInit {
         };
         reader.readAsDataURL(this.selectedFiles[i]);
         this.selectedFileNames.push(this.selectedFiles[i].name);
-        this.product?.images.push(this.onFileRetrieved(this.selectedFiles[i]));
+      }
+      if (this.product && this.product.productId) {
+        this.productService.uploadFile(event.target.files[0], this.product.productId)
+          .subscribe(() => {});
       }
     }
   }
 
-  onFileRetrieved(file: File) {
-    const image = new ProductImage();
-    image.data = file;
-    return image;
-  }
+  
 }
 /**
  * We use FileReader with readAsDataURL() method to get the image preview URL and put it into previews array. This method produces data as a data: URL representing the file’s data as a base64 encoded string. The URL life is tied to the document in the window on which it was created.

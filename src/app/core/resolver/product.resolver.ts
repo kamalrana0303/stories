@@ -16,9 +16,11 @@ export class ProductResolver implements Resolve<ResolvedProduct> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ResolvedProduct> {
     const id:any = route.paramMap.get("id");
     if(id == '0'){
+      const p = new Product();
+      p.productId = '0'
       return of( {
         title: 'Add new Product',
-        product: new Product(),
+        product: p,
         error: undefined
       })
     }

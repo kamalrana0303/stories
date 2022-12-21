@@ -12,11 +12,12 @@ export class ProductService {
   uploadFile(file:File, productId:string){
     const formData: FormData = new FormData();
     formData.append('file', file);
-    const req = new HttpRequest('POST', `${environment.oauth2.apiRoot}product/image?productId+${productId}`, formData, {
-      reportProgress: true,
-      responseType: 'json'
-    });
-    return this.http.request(req);
+    // const req = new HttpRequest('POST', `${environment.oauth2.apiRoot}product/image/${productId}`,formData, {
+    //   reportProgress: true,
+    //   responseType: 'json'
+    // });
+    // return this.http.request(req);
+    return this.http.post<any>(environment.oauth2.apiRoot +"product/image/"+productId,formData)
   }
 
   getProducts():Observable<Product[]>{
@@ -68,4 +69,6 @@ export class ProductService {
     params.append(productId, productId);
     return this.http.patch<Product>(environment.oauth2.apiRoot + "product/measurement",measurement, {params:params} )
   }
+
+ 
 }
